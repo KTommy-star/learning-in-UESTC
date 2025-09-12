@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菲的19岁生日礼物 - 时空隧道相册</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 性能优化 */
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+            transform: translateZ(0); /* 启用硬件加速 */
+            backface-visibility: hidden;
+        }
+
+        /* 音频播放器样式 */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            will-change: transform;
+        }
+
+        .music-player:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            will-change: transform;
+        }
+
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .volume-slider {
+            width: 60px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* 媒体查询 - 移动端优化 */
+        @media (max-width: 768px) {
+            .music-player {
+                top: 10px;
+                right: 10px;
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            
+            .music-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+            
+            .volume-slider {
+                width: 50px;
+            }
+        }
+
+        /* 启动界面样式 */
+        .startup-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            color: white;
+            text-align: center;
+            transform: translateZ(0);
+        }
+
+        .startup-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.3); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.6); }
+        }
+
+        .startup-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* 浮动元素样式 */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 182, 193, 0.7);
+            font-size: 20px;
+            animation: floatUp 8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .floating-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-star {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            animation: twinkle 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .floating-flowers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-flower {
+            position: absolute;
+            color: rgba(255, 192, 203, 0.6);
+            font-size: 18px;
+            animation: sway 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(20px) rotate(5deg); }
+            75% { transform: translateX(-20px) rotate(-5deg); }
+        }
+
+        .floating-butterflies {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-butterfly {
+            position: absolute;
+            color: rgba(255, 165, 0, 0.7);
+            font-size: 22px;
+            animation: flutter 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes flutter {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(5deg); }
+            50% { transform: translateY(-5px) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(-5deg); }
+        }
+
+        .floating-sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-sparkle {
+            position: absolute;
+            color: rgba(255, 215, 0, 0.8);
+            font-size: 14px;
+            animation: sparkle 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+
+        /* 启动按钮样式 */
+        .start-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .start-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .start-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .start-btn:hover::before {
+            left: 100%;
+        }
+
+        /* 启动粒子效果 */
+        .startup-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .startup-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* 爱情宣言页面样式 */
+        .love-declaration-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s ease;
+        }
+
+        .love-declaration-page.show {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* 浮动心形装饰 */
+        .floating-hearts-declaration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-heart-declaration {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.6);
+            font-size: 24px;
+            animation: heartFloat 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* 浮动玫瑰装饰 */
+        .floating-roses {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-rose {
+            position: absolute;
+            color: rgba(220, 20, 60, 0.7);
+            font-size: 20px;
+            animation: roseFloat 12s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes roseFloat {
+            0%, 100% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateX(30px) translateY(-20px) rotate(90deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(0) translateY(-40px) rotate(180deg);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateX(-30px) translateY(-20px) rotate(270deg);
+                opacity: 1;
+            }
+        }
+
+        /* 宣言内容样式 */
+        .declaration-content {
+            max-width: 800px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .declaration-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #d63384;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .declaration-decoration {
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: #ff69b4;
+            animation: decorationSpin 4s linear infinite;
+        }
+
+        @keyframes decorationSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .declaration-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #495057;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            animation: textGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 1px 1px 2px rgba(255,255,255,0.8); }
+            to { text-shadow: 1px 1px 2px rgba(255,255,255,0.8), 0 0 10px rgba(255,105,180,0.3); }
+        }
+
+        /* 文本浮动效果 */
+        .floating-text {
+            animation: textFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes textFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* 宣言页脚 */
+        .declaration-footer {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        /* 爱心符号动画 */
+        .heart-symbol {
+            display: inline-block;
+            color: #ff1744;
+            animation: heartBeat 1.5s ease-in-out infinite;
+            margin: 0 5px;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+        }
+
+        /* 返回相册按钮 */
+        .back-to-album-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            font-family: inherit;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-to-album-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .back-to-album-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .back-to-album-btn:hover::before {
+            left: 100%;
+        }
+
+        /* 页面切换动画 - 远近拉伸镜头感 */
+        .zoom-in-transition {
+            animation: zoomIn 0.5s ease-out forwards;
+        }
+
+        .zoom-out-transition {
+            animation: zoomOut 0.5s ease-in forwards;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes zoomOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+
+        /* 相册容器 */
+        .tunnel-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: none;
+            perspective: 1000px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* 时空隧道容器 */
+        .time-tunnel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            transform: translate(-50%, -50%);
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.8) 20%, transparent 80%);
+            animation: tunnelRotate 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes tunnelRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* 白玫瑰装饰元素 */
+        .white-roses {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .white-rose {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            animation: whiteRoseFloat 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes whiteRoseFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-30px) rotate(90deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-60px) rotate(180deg);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-30px) rotate(270deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* 隧道环样式 */
+        .tunnel-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ringPulse 4s ease-in-out infinite;
+        }
+
+        .tunnel-ring:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            animation-delay: 0s;
+        }
+
+        .tunnel-ring:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            animation-delay: 0.5s;
+        }
+
+        .tunnel-ring:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            animation-delay: 1s;
+        }
+
+        .tunnel-ring:nth-child(4) {
+            width: 400px;
+            height: 400px;
+            animation-delay: 1.5s;
+        }
+
+        .tunnel-ring:nth-child(5) {
+            width: 500px;
+            height: 500px;
+            animation-delay: 2s;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% {
+                opacity: 0.1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        /* 立体照片堆叠 */
+        .photo-stack {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 500px;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .photo-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+
+        .photo-card.active {
+            transform: translateZ(0) rotateY(0deg) scale(1);
+            z-index: 10;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(255, 215, 0, 0.3),
+                inset 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .photo-card.prev {
+            transform: translateZ(-100px) rotateY(-15deg) translateX(-50px) scale(0.9);
+            z-index: 5;
+            opacity: 0.7;
+        }
+
+        .photo-card.next {
+            transform: translateZ(-100px) rotateY(15deg) translateX(50px) scale(0.9);
+            z-index: 5;
+            opacity: 0.7;
+        }
+
+        .photo-card.hidden {
+            transform: translateZ(-200px) rotateY(0deg) scale(0.8);
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        /* 照片内容 */
+        .photo-content {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        }
+
+        .photo-emoji {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: emojiFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .photo-image-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .photo-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .photo-description {
+            font-size: 1rem;
+            text-align: center;
+            color: #666;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* 照片装饰元素 */
+        .decoration-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #ffd700;
+        }
+
+        .decoration-corner.top-left {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .decoration-corner.top-right {
+            top: 10px;
+            right: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .decoration-corner.bottom-left {
+            bottom: 10px;
+            left: 10px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .decoration-corner.bottom-right {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .decoration-sparkle {
+            position: absolute;
+            color: #ffd700;
+            font-size: 12px;
+            animation: sparkleRotate 2s linear infinite;
+        }
+
+        @keyframes sparkleRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 古风竖排祝福语 */
+        .floating-blessing {
+            position: fixed;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 15;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(-50%) translateX(50px);
+            pointer-events: none;
+        }
+
+        .floating-blessing.active {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .floating-blessing.slide-out {
+            opacity: 0;
+            transform: translateY(-50%) translateX(-50px);
+        }
+
+        /* 照片装饰 - 魅力符 */
+        .decoration-charm {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff69b4;
+            font-size: 16px;
+            animation: charmGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes charmGlow {
+            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+        }
+
+        /* 照片装饰 - 丝带 */
+        .decoration-ribbon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 40px solid #ff1744;
+            border-bottom: 40px solid transparent;
+        }
+
+        .decoration-ribbon::after {
+            content: '💝';
+            position: absolute;
+            top: -30px;
+            left: -35px;
+            font-size: 20px;
+            color: white;
+        }
+
+        /* 照片装饰 - 星星 */
+        .decoration-stars {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: #ffd700;
+            font-size: 14px;
+            animation: starsShine 2s ease-in-out infinite;
+        }
+
+        @keyframes starsShine {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* 古风祝福语激活动画 */
+        .floating-blessing.slide-in {
+            animation: slideInFromRight 0.5s ease-out forwards;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+
+        /* 控制界面 */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 20;
+        }
+
+        /* 下一页按钮 */
+        .next-page-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-page-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .next-page-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .next-page-btn:hover::before {
+            left: 100%;
+        }
+
+        /* 导航按钮 */
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-family: inherit;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* 进度条 */
+        .progress-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            z-index: 20;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* 返回按钮 */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 20;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .startup-title {
+                font-size: 2rem;
+            }
+            
+            .startup-subtitle {
+                font-size: 1rem;
+            }
+            
+            .photo-stack {
+                width: 280px;
+                height: 400px;
+            }
+            
+            .controls {
+                bottom: 20px;
+                gap: 10px;
+            }
+            
+            .nav-btn, .next-page-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .progress-container {
+                width: 250px;
+            }
+            
+            .floating-blessing {
+                right: 20px;
+                font-size: 16px;
+            }
+            
+            .declaration-title {
+                font-size: 2.5rem;
+            }
+            
+            .declaration-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .startup-title {
+                font-size: 1.5rem;
+            }
+            
+            .photo-stack {
+                width: 250px;
+                height: 350px;
+            }
+            
+            .photo-content {
+                padding: 15px;
+            }
+            
+            .photo-emoji {
+                font-size: 2rem;
+            }
+            
+            .photo-title {
+                font-size: 1.2rem;
+            }
+            
+            .photo-description {
+                font-size: 0.9rem;
+            }
+            
+            .floating-blessing {
+                right: 10px;
+                font-size: 14px;
+            }
+            
+            .declaration-title {
+                font-size: 2rem;
+            }
+            
+            .declaration-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* 星空背景 */
+        .starry-sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: starTwinkle 3s ease-in-out infinite;
+        }
+
+        .star.small {
+            width: 2px;
+            height: 2px;
+        }
+
+        .star.medium {
+            width: 3px;
+            height: 3px;
+        }
+
+        .star.large {
+            width: 4px;
+            height: 4px;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* 烟花效果 */
+        .firework {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: fireworkExplode 1.5s ease-out forwards;
+        }
+
+        @keyframes fireworkExplode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--dx), var(--dy)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .firework-trail {
+            position: absolute;
+            pointer-events: none;
+            animation: trailFade 1.2s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            0% {
+                opacity: 1;
+                transform: scaleY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scaleY(1);
+            }
+        }
+
+        /* 震动动画 */
+        @keyframes stackShake {
+            0%, 100% { transform: translate(-50%, -50%) rotateX(0deg); }
+            25% { transform: translate(-50%, -50%) rotateX(2deg); }
+            75% { transform: translate(-50%, -50%) rotateX(-2deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 音频播放器 -->
+    <div class="music-player">
+        <div class="music-controls">
+            <button class="music-btn" id="playPauseBtn">▶️</button>
+            <button class="music-btn" id="muteBtn">🔊</button>
+        </div>
+        <div class="volume-control">
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+        </div>
+        <audio id="backgroundMusic" loop>
+            <!-- 由于无法内联音频文件，这里留空，用户可以自行添加音频文件 -->
+        </audio>
+    </div>
+
+    <!-- 启动界面 -->
+    <div class="startup-screen">
+        <div class="floating-hearts"></div>
+        <div class="floating-stars"></div>
+        <div class="floating-flowers"></div>
+        <div class="floating-butterflies"></div>
+        <div class="floating-sparkles"></div>
+        <div class="startup-particles"></div>
+        
+        <h1 class="startup-title">菲的19岁生日礼物</h1>
+        <p class="startup-subtitle">时空隧道相册 · 记录美好时光</p>
+        <button class="start-btn" id="startBtn">开始旅程 ✨</button>
+    </div>
+
+    <!-- 时空隧道相册容器 -->
+    <div class="tunnel-container">
+        <!-- 时空隧道背景 -->
+        <div class="time-tunnel"></div>
+        
+        <!-- 隧道环 -->
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+        
+        <!-- 白玫瑰装饰 -->
+        <div class="white-roses"></div>
+        
+        <!-- 照片堆叠 -->
+        <div class="photo-stack"></div>
+        
+        <!-- 古风祝福语 -->
+        <div class="floating-blessing"></div>
+        
+        <!-- 进度条 -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <!-- 返回按钮 -->
+        <button class="back-btn" id="backBtn">←</button>
+        
+        <!-- 控制按钮 -->
+        <div class="controls">
+            <button class="nav-btn" id="prevBtn">上一张</button>
+            <button class="next-page-btn" id="nextPageBtn">爱情宣言 💕</button>
+            <button class="nav-btn" id="nextBtn">下一张</button>
+        </div>
+    </div>
+
+    <!-- 爱情宣言页面 -->
+    <div class="love-declaration-page">
+        <!-- 浮动装饰 -->
+        <div class="floating-hearts-declaration"></div>
+        <div class="floating-roses"></div>
+        
+        <div class="declaration-content">
+            <h1 class="declaration-title floating-text">My Dearest Love</h1>
+            
+            <div class="declaration-decoration">💖</div>
+            
+            <p class="declaration-text floating-text">
+                在这个特别的日子里，我想对你说：<br>
+                你是我生命中最美的奇迹，<br>
+                每一个与你共度的时光都是珍贵的回忆。<br>
+                愿你的19岁充满欢声笑语，<br>
+                愿我们的爱情如星辰般永恒闪耀。
+            </p>
+            
+            <div class="declaration-decoration">🌹</div>
+            
+            <p class="declaration-text floating-text">
+                Happy 19th Birthday, my love!<br>
+                <span class="heart-symbol">❤️</span>
+                Forever yours
+                <span class="heart-symbol">❤️</span>
+            </p>
+            
+            <div class="declaration-footer">
+                "Love is not about how many days, months, or years you have been together.<br>
+                Love is about how much you love each other every single day."
+            </div>
+            
+            <button class="back-to-album-btn" id="backToAlbumBtn">返回相册 📸</button>
+        </div>
+    </div>
+
+    <script>
+        // 照片数据
+        const photos = [
+            {
+                emoji: '🎂',
+                title: '生日快乐',
+                description: '愿你的每一天都像今天一样充满欢乐和惊喜！',
+                image: null // 由于无法内联图片，这里设为null
+            },
+            {
+                emoji: '🌟',
+                title: '闪耀的你',
+                description: '你就像夜空中最亮的星，照亮了我的世界。',
+                image: null
+            },
+            {
+                emoji: '💕',
+                title: '甜蜜时光',
+                description: '和你在一起的每一刻都是最甜蜜的回忆。',
+                image: null
+            },
+            {
+                emoji: '🌸',
+                title: '春天的约定',
+                description: '就像春天的花朵一样，我们的爱情永远绽放。',
+                image: null
+            },
+            {
+                emoji: '🎈',
+                title: '快乐时光',
+                description: '愿你的生活永远充满色彩和快乐！',
+                image: null
+            }
+        ];
+
+        // 祝福语数据
+        const blessings = [
+            '生日快乐，我的宝贝',
+            '愿你永远年轻美丽',
+            '每天都要开心哦',
+            '我会一直陪伴你',
+            '你是我的小公主'
+        ];
+
+        // 音乐播放器类
+        class MusicPlayer {
+            constructor() {
+                this.audio = document.getElementById('backgroundMusic');
+                this.playPauseBtn = document.getElementById('playPauseBtn');
+                this.muteBtn = document.getElementById('muteBtn');
+                this.volumeSlider = document.getElementById('volumeSlider');
+                this.isPlaying = false;
+                this.isMuted = false;
+                
+                this.init();
+            }
+            
+            init() {
+                this.bindEvents();
+                this.setVolume(0.5);
+            }
+            
+            bindEvents() {
+                this.playPauseBtn.addEventListener('click', () => this.togglePlay());
+                this.muteBtn.addEventListener('click', () => this.toggleMute());
+                this.volumeSlider.addEventListener('input', (e) => this.setVolume(e.target.value));
+                
+                this.audio.addEventListener('loadeddata', () => {
+                    console.log('音频加载完成');
+                });
+                
+                this.audio.addEventListener('error', (e) => {
+                    console.log('音频加载失败:', e);
+                });
+            }
+            
+            async loadMusic(src) {
+                try {
+                    this.audio.src = src;
+                    await this.audio.load();
+                    console.log('音乐加载成功');
+                } catch (error) {
+                    console.error('音乐加载失败:', error);
+                }
+            }
+            
+            async togglePlay() {
+                try {
+                    if (this.isPlaying) {
+                        await this.audio.pause();
+                        this.playPauseBtn.textContent = '▶️';
+                        this.isPlaying = false;
+                    } else {
+                        await this.audio.play();
+                        this.playPauseBtn.textContent = '⏸️';
+                        this.isPlaying = true;
+                    }
+                } catch (error) {
+                    console.error('播放控制失败:', error);
+                }
+            }
+            
+            toggleMute() {
+                this.isMuted = !this.isMuted;
+                this.audio.muted = this.isMuted;
+                this.muteBtn.textContent = this.isMuted ? '🔇' : '🔊';
+            }
+            
+            setVolume(volume) {
+                this.audio.volume = volume;
+                this.volumeSlider.value = volume;
+                
+                // 根据音量设置按钮文本
+                if (volume == 0) {
+                    this.muteBtn.textContent = '🔇';
+                } else if (volume < 0.5) {
+                    this.muteBtn.textContent = '🔉';
+                } else {
+                    this.muteBtn.textContent = '🔊';
+                }
+            }
+        }
+
+        // 时空隧道相册类
+        class TunnelPhotoAlbum {
+            constructor() {
+                this.photos = photos;
+                this.blessings = blessings;
+                this.currentIndex = 0;
+                this.isStarted = false;
+                this.autoSlideInterval = null;
+                
+                this.init();
+            }
+            
+            init() {
+                this.createStartupScreen();
+                this.createTunnelContainer();
+                this.createFloatingParticles();
+                this.bindEvents();
+            }
+            
+            createStartupScreen() {
+                const startBtn = document.getElementById('startBtn');
+                startBtn.addEventListener('click', () => this.startAlbum());
+            }
+            
+            createTunnelContainer() {
+                this.createPhotoCards();
+                this.bindExistingControls();
+            }
+            
+            bindExistingControls() {
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const backBtn = document.getElementById('backBtn');
+                
+                prevBtn.addEventListener('click', () => this.previousPhoto());
+                nextBtn.addEventListener('click', () => this.nextPhoto());
+                backBtn.addEventListener('click', () => this.backToStart());
+                
+                this.updateProgressBar();
+            }
+            
+            createPhotoCards() {
+                const photoStack = document.querySelector('.photo-stack');
+                
+                this.photos.forEach((photo, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'photo-card';
+                    card.innerHTML = `
+                        <div class="photo-content">
+                            <div class="decoration-corner top-left"></div>
+                            <div class="decoration-corner top-right"></div>
+                            <div class="decoration-corner bottom-left"></div>
+                            <div class="decoration-corner bottom-right"></div>
+                            
+                            <div class="decoration-sparkle" style="top: 20px; right: 20px;">✨</div>
+                            <div class="decoration-sparkle" style="bottom: 20px; left: 20px;">⭐</div>
+                            
+                            <div class="decoration-charm">💖</div>
+                            <div class="decoration-ribbon"></div>
+                            <div class="decoration-stars">⭐⭐⭐</div>
+                            
+                            <div class="photo-emoji">${photo.emoji}</div>
+                            
+                            <div class="photo-image-container">
+                                ${photo.image ? `<img src="${photo.image}" alt="${photo.title}" class="photo-image">` : '<div style="color: #999; font-size: 1.2rem;">📷 照片位置</div>'}
+                            </div>
+                            
+                            <h3 class="photo-title">${photo.title}</h3>
+                            <p class="photo-description">${photo.description}</p>
+                        </div>
+                    `;
+                    
+                    photoStack.appendChild(card);
+                });
+            }
+            
+            startAlbum() {
+                const startupScreen = document.querySelector('.startup-screen');
+                const tunnelContainer = document.querySelector('.tunnel-container');
+                
+                // 添加远近拉伸镜头感切换动画
+                startupScreen.classList.add('zoom-out-transition');
+                
+                setTimeout(() => {
+                    startupScreen.style.display = 'none';
+                    startupScreen.classList.remove('zoom-out-transition');
+                    
+                    tunnelContainer.style.display = 'block';
+                    tunnelContainer.classList.add('zoom-in-transition');
+                    
+                    setTimeout(() => {
+                        tunnelContainer.classList.remove('zoom-in-transition');
+                    }, 500);
+                }, 500);
+                
+                this.isStarted = true;
+                this.initializeStack();
+                this.createEnterAnimation();
+            }
+            
+            createEnterAnimation() {
+                // 创建星光粒子进入效果
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        this.createStarParticle();
+                    }, i * 100);
+                }
+            }
+            
+            createStarParticle() {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '15';
+                particle.style.fontSize = '20px';
+                particle.textContent = '✨';
+                particle.style.color = '#ffd700';
+                
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                document.body.appendChild(particle);
+                
+                particle.animate([
+                    { 
+                        opacity: 0,
+                        transform: 'scale(0) rotate(0deg)'
+                    },
+                    { 
+                        opacity: 1,
+                        transform: 'scale(1.5) rotate(180deg)',
+                        offset: 0.5
+                    },
+                    { 
+                        opacity: 0,
+                        transform: 'scale(0) rotate(360deg)'
+                    }
+                ], {
+                    duration: 2000,
+                    easing: 'ease-out'
+                }).onfinish = () => {
+                    particle.remove();
+                };
+            }
+            
+            nextPhoto() {
+                if (!this.isStarted) return;
+                
+                this.currentIndex = (this.currentIndex + 1) % this.photos.length;
+                this.updatePhotoStack();
+                this.updateControls();
+                this.updateFloatingBlessing();
+                this.updateProgressBar();
+                this.createTransitionEffect('next');
+            }
+            
+            previousPhoto() {
+                if (!this.isStarted) return;
+                
+                this.currentIndex = (this.currentIndex - 1 + this.photos.length) % this.photos.length;
+                this.updatePhotoStack();
+                this.updateControls();
+                this.updateFloatingBlessing();
+                this.updateProgressBar();
+                this.createTransitionEffect('prev');
+            }
+            
+            updatePhotoStack() {
+                const cards = document.querySelectorAll('.photo-card');
+                
+                cards.forEach((card, index) => {
+                    card.classList.remove('active', 'prev', 'next', 'hidden');
+                    
+                    if (index === this.currentIndex) {
+                        card.classList.add('active');
+                    } else if (index === (this.currentIndex - 1 + this.photos.length) % this.photos.length) {
+                        card.classList.add('prev');
+                    } else if (index === (this.currentIndex + 1) % this.photos.length) {
+                        card.classList.add('next');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // 添加震动效果
+                 const photoStack = document.querySelector('.photo-stack');
+                 photoStack.style.animation = 'stackShake 0.3s ease-in-out';
+                 setTimeout(() => {
+                     photoStack.style.animation = '';
+                 }, 300);
+             }
+             
+             updateControls() {
+                 const prevBtn = document.getElementById('prevBtn');
+                 const nextBtn = document.getElementById('nextBtn');
+                 
+                 prevBtn.disabled = false;
+                 nextBtn.disabled = false;
+             }
+             
+             updateFloatingBlessing() {
+                 const blessing = document.querySelector('.floating-blessing');
+                 const currentBlessing = this.blessings[this.currentIndex];
+                 
+                 // 先滑出
+                 blessing.classList.add('slide-out');
+                 
+                 setTimeout(() => {
+                     blessing.textContent = currentBlessing;
+                     blessing.classList.remove('slide-out');
+                     blessing.classList.add('slide-in', 'active');
+                     
+                     setTimeout(() => {
+                         blessing.classList.remove('slide-in');
+                     }, 500);
+                 }, 250);
+             }
+             
+             updateProgressBar() {
+                 const progressBar = document.querySelector('.progress-bar');
+                 const progress = ((this.currentIndex + 1) / this.photos.length) * 100;
+                 progressBar.style.width = progress + '%';
+             }
+             
+             createTransitionEffect(direction) {
+                 // 创建过渡粒子效果
+                 for (let i = 0; i < 10; i++) {
+                     setTimeout(() => {
+                         this.createTransitionParticle(direction);
+                     }, i * 50);
+                 }
+             }
+             
+             createTransitionParticle(direction) {
+                 const particle = document.createElement('div');
+                 particle.style.position = 'fixed';
+                 particle.style.pointerEvents = 'none';
+                 particle.style.zIndex = '15';
+                 particle.style.fontSize = '16px';
+                 particle.textContent = direction === 'next' ? '→' : '←';
+                 particle.style.color = '#ffd700';
+                 
+                 const x = direction === 'next' ? 0 : window.innerWidth;
+                 const y = Math.random() * window.innerHeight;
+                 
+                 particle.style.left = x + 'px';
+                 particle.style.top = y + 'px';
+                 
+                 document.body.appendChild(particle);
+                 
+                 const endX = direction === 'next' ? window.innerWidth : 0;
+                 
+                 particle.animate([
+                     { 
+                         opacity: 0,
+                         transform: 'translateX(0)'
+                     },
+                     { 
+                         opacity: 1,
+                         transform: `translateX(${(endX - x) / 2}px)`,
+                         offset: 0.5
+                     },
+                     { 
+                         opacity: 0,
+                         transform: `translateX(${endX - x}px)`
+                     }
+                 ], {
+                     duration: 1000,
+                     easing: 'ease-out'
+                 }).onfinish = () => {
+                     particle.remove();
+                 };
+             }
+             
+             initializeStack() {
+                 this.updatePhotoStack();
+                 this.updateFloatingBlessing();
+                 this.updateProgressBar();
+             }
+             
+             createFloatingParticles() {
+                 // 创建启动界面浮动元素
+                 this.createFloatingHearts();
+                 this.createFloatingStars();
+                 this.createFloatingFlowers();
+                 this.createFloatingButterflies();
+                 this.createFloatingSparkles();
+                 this.createStartupParticles();
+                 
+                 // 创建相册界面装饰
+                 this.createWhiteRoses();
+                 
+                 // 创建爱情宣言页面装饰
+                 this.createDeclarationHearts();
+                 this.createDeclarationRoses();
+             }
+             
+             createFloatingHearts() {
+                 const container = document.querySelector('.floating-hearts');
+                 for (let i = 0; i < 15; i++) {
+                     const heart = document.createElement('div');
+                     heart.className = 'floating-heart';
+                     heart.textContent = '💖';
+                     heart.style.left = Math.random() * 100 + '%';
+                     heart.style.animationDelay = Math.random() * 8 + 's';
+                     heart.style.animationDuration = (8 + Math.random() * 4) + 's';
+                     container.appendChild(heart);
+                 }
+             }
+             
+             createFloatingStars() {
+                 const container = document.querySelector('.floating-stars');
+                 for (let i = 0; i < 20; i++) {
+                     const star = document.createElement('div');
+                     star.className = 'floating-star';
+                     star.textContent = '⭐';
+                     star.style.left = Math.random() * 100 + '%';
+                     star.style.top = Math.random() * 100 + '%';
+                     star.style.animationDelay = Math.random() * 3 + 's';
+                     container.appendChild(star);
+                 }
+             }
+             
+             createFloatingFlowers() {
+                 const container = document.querySelector('.floating-flowers');
+                 for (let i = 0; i < 12; i++) {
+                     const flower = document.createElement('div');
+                     flower.className = 'floating-flower';
+                     flower.textContent = '🌸';
+                     flower.style.left = Math.random() * 100 + '%';
+                     flower.style.top = Math.random() * 100 + '%';
+                     flower.style.animationDelay = Math.random() * 6 + 's';
+                     container.appendChild(flower);
+                 }
+             }
+             
+             createFloatingButterflies() {
+                 const container = document.querySelector('.floating-butterflies');
+                 for (let i = 0; i < 8; i++) {
+                     const butterfly = document.createElement('div');
+                     butterfly.className = 'floating-butterfly';
+                     butterfly.textContent = '🦋';
+                     butterfly.style.left = Math.random() * 100 + '%';
+                     butterfly.style.top = Math.random() * 100 + '%';
+                     butterfly.style.animationDelay = Math.random() * 4 + 's';
+                     container.appendChild(butterfly);
+                 }
+             }
+             
+             createFloatingSparkles() {
+                 const container = document.querySelector('.floating-sparkles');
+                 for (let i = 0; i < 25; i++) {
+                     const sparkle = document.createElement('div');
+                     sparkle.className = 'floating-sparkle';
+                     sparkle.textContent = '✨';
+                     sparkle.style.left = Math.random() * 100 + '%';
+                     sparkle.style.top = Math.random() * 100 + '%';
+                     sparkle.style.animationDelay = Math.random() * 2 + 's';
+                     container.appendChild(sparkle);
+                 }
+             }
+             
+             createStartupParticles() {
+                 const container = document.querySelector('.startup-particles');
+                 for (let i = 0; i < 30; i++) {
+                     const particle = document.createElement('div');
+                     particle.className = 'startup-particle';
+                     particle.style.left = Math.random() * 100 + '%';
+                     particle.style.animationDelay = Math.random() * 6 + 's';
+                     particle.style.animationDuration = (6 + Math.random() * 3) + 's';
+                     container.appendChild(particle);
+                 }
+             }
+             
+             createWhiteRoses() {
+                 const container = document.querySelector('.white-roses');
+                 for (let i = 0; i < 10; i++) {
+                     const rose = document.createElement('div');
+                     rose.className = 'white-rose';
+                     rose.textContent = '🤍';
+                     rose.style.left = Math.random() * 100 + '%';
+                     rose.style.top = Math.random() * 100 + '%';
+                     rose.style.animationDelay = Math.random() * 15 + 's';
+                     container.appendChild(rose);
+                 }
+             }
+             
+             createDeclarationHearts() {
+                 const container = document.querySelector('.floating-hearts-declaration');
+                 for (let i = 0; i < 20; i++) {
+                     const heart = document.createElement('div');
+                     heart.className = 'floating-heart-declaration';
+                     heart.textContent = '💕';
+                     heart.style.left = Math.random() * 100 + '%';
+                     heart.style.animationDelay = Math.random() * 10 + 's';
+                     heart.style.animationDuration = (10 + Math.random() * 5) + 's';
+                     container.appendChild(heart);
+                 }
+             }
+             
+             createDeclarationRoses() {
+                 const container = document.querySelector('.floating-roses');
+                 for (let i = 0; i < 15; i++) {
+                     const rose = document.createElement('div');
+                     rose.className = 'floating-rose';
+                     rose.textContent = '🌹';
+                     rose.style.left = Math.random() * 100 + '%';
+                     rose.style.top = Math.random() * 100 + '%';
+                     rose.style.animationDelay = Math.random() * 12 + 's';
+                     container.appendChild(rose);
+                 }
+             }
+             
+             backToStart() {
+                 const tunnelContainer = document.querySelector('.tunnel-container');
+                 const startupScreen = document.querySelector('.startup-screen');
+                 
+                 tunnelContainer.classList.add('zoom-out-transition');
+                 
+                 setTimeout(() => {
+                     tunnelContainer.style.display = 'none';
+                     tunnelContainer.classList.remove('zoom-out-transition');
+                     
+                     startupScreen.style.display = 'flex';
+                     startupScreen.classList.add('zoom-in-transition');
+                     
+                     setTimeout(() => {
+                         startupScreen.classList.remove('zoom-in-transition');
+                     }, 500);
+                 }, 500);
+                 
+                 this.isStarted = false;
+                 this.currentIndex = 0;
+             }
+             
+             bindEvents() {
+                 // 爱情宣言页面事件
+                 const nextPageBtn = document.getElementById('nextPageBtn');
+                 const backToAlbumBtn = document.getElementById('backToAlbumBtn');
+                 
+                 nextPageBtn.addEventListener('click', () => this.showLoveDeclaration());
+                 backToAlbumBtn.addEventListener('click', () => this.hideLoveDeclaration());
+                 
+                 // 键盘事件
+                 document.addEventListener('keydown', (e) => {
+                     if (!this.isStarted) return;
+                     
+                     switch(e.key) {
+                         case 'ArrowLeft':
+                             this.previousPhoto();
+                             break;
+                         case 'ArrowRight':
+                             this.nextPhoto();
+                             break;
+                         case 'Escape':
+                             this.backToStart();
+                             break;
+                     }
+                 });
+             }
+             
+             showLoveDeclaration() {
+                 const declarationPage = document.querySelector('.love-declaration-page');
+                 const tunnelContainer = document.querySelector('.tunnel-container');
+                 
+                 tunnelContainer.classList.add('zoom-out-transition');
+                 
+                 setTimeout(() => {
+                     tunnelContainer.style.display = 'none';
+                     tunnelContainer.classList.remove('zoom-out-transition');
+                     
+                     declarationPage.classList.add('show');
+                     declarationPage.classList.add('zoom-in-transition');
+                     
+                     setTimeout(() => {
+                         declarationPage.classList.remove('zoom-in-transition');
+                     }, 500);
+                 }, 500);
+             }
+             
+             hideLoveDeclaration() {
+                 const declarationPage = document.querySelector('.love-declaration-page');
+                 const tunnelContainer = document.querySelector('.tunnel-container');
+                 
+                 declarationPage.classList.add('zoom-out-transition');
+                 
+                 setTimeout(() => {
+                     declarationPage.classList.remove('show', 'zoom-out-transition');
+                     
+                     tunnelContainer.style.display = 'block';
+                     tunnelContainer.classList.add('zoom-in-transition');
+                     
+                     setTimeout(() => {
+                         tunnelContainer.classList.remove('zoom-in-transition');
+                     }, 500);
+                 }, 500);
+             }
+         }
+         
+         // 初始化应用
+         document.addEventListener('DOMContentLoaded', () => {
+             const musicPlayer = new MusicPlayer();
+             const photoAlbum = new TunnelPhotoAlbum();
+             
+             // 尝试加载背景音乐（用户可以自行添加音频文件）
+             // musicPlayer.loadMusic('path/to/your/music.mp3');
+             
+             console.log('生日礼物相册已加载完成！');
+         });
+     </script>
+ </body>
+ </html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <title>菲菲19岁生日快乐 🎂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 音频播放器 -->
+    <div class="music-player" id="musicPlayer">
+        <div class="music-controls">
+            <input type="file" id="musicFile" accept=".mp3,.wav,.ogg" style="display: none;">
+            <button class="music-btn upload-btn" id="uploadBtn" title="上传音乐">🎵</button>
+            <button class="music-btn play-btn" id="playBtn" title="播放/暂停" disabled>▶️</button>
+            <button class="music-btn volume-btn" id="volumeBtn" title="音量">🔊</button>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+        </div>
+        <div class="music-info" id="musicInfo">点击上传音乐文件</div>
+        <audio id="audioPlayer" preload="none"></audio>
+    </div>
+    <!-- 启动界面 -->
+    <div class="startup-screen" id="startupScreen">
+        <div class="startup-content">
+            <div class="startup-title">
+                <h1>菲的19岁生日礼物</h1>
+                <p>一段美好回忆的时空之旅</p>
+                <div class="startup-emoji">🎂💕✨</div>
+            </div>
+            <button class="start-button" id="startButton">
+                <span>开启回忆之旅</span>
+                <div class="button-glow"></div>
+            </button>
+            <div class="startup-particles"></div>
+            <div class="startup-decorations">
+                <div class="floating-heart">💖</div>
+                <div class="floating-star">⭐</div>
+                <div class="floating-flower">🌸</div>
+                <div class="floating-butterfly">🦋</div>
+                <div class="floating-sparkle">✨</div>
+                <div class="floating-heart2">💕</div>
+                <div class="floating-star2">🌟</div>
+                <div class="floating-flower2">🌺</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 时空隧道容器 -->
+    <div class="tunnel-container" id="tunnelContainer">
+        <!-- 动态隧道背景 -->
+        <div class="tunnel-background">
+            <div class="tunnel-rings"></div>
+            <!-- 白玫瑰装饰 -->
+            <div class="white-roses">
+                <div class="white-rose">🤍</div>
+                <div class="white-rose">🌹</div>
+                <div class="white-rose">🤍</div>
+                <div class="white-rose">🌹</div>
+                <div class="white-rose">🤍</div>
+                <div class="white-rose">🌹</div>
+                <div class="white-rose">🤍</div>
+                <div class="white-rose">🌹</div>
+            </div>
+        </div>
+        
+        <!-- 旋转环 -->
+        <div class="tunnel-ring" style="--delay: 0s; --size: 200px;"></div>
+        <div class="tunnel-ring" style="--delay: 1s; --size: 400px;"></div>
+        <div class="tunnel-ring" style="--delay: 2s; --size: 600px;"></div>
+        <div class="tunnel-ring" style="--delay: 3s; --size: 800px;"></div>
+        
+        <!-- 立体照片堆叠 -->
+        <div class="photo-stack" id="photoStack">
+            <!-- 照片卡片将由JavaScript动态生成 -->
+        </div>
+        
+        <!-- 古风竖排祝福语 -->
+        <div class="floating-blessings left position-top" id="leftBlessings">
+            <div class="ancient-blessing">我猜我应该是喜欢你了</div>
+            <div class="ancient-blessing">没有任何原因</div>
+            <div class="ancient-blessing">也没办法说明</div>
+        </div>
+        
+        <div class="floating-blessings right position-top" id="rightBlessings">
+            <div class="ancient-blessing">我猜一定是上天的指引</div>
+            <div class="ancient-blessing">让我遇见了你</div>
+            <div class="ancient-blessing">最好时候的你</div>
+        </div>
+
+        <!-- 控制界面 -->
+        <div class="controls">
+            <button class="nav-btn prev-btn" id="prevBtn">‹</button>
+            <button class="nav-btn next-btn" id="nextBtn">›</button>
+        </div>
+
+        <!-- 下一页按钮 -->
+        <div class="next-page-container">
+            <button class="next-page-btn" id="nextPageBtn">
+                <span>下一页</span>
+                <div class="btn-sparkle">✨</div>
+            </button>
+        </div>
+
+        <!-- 进度条 -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- 返回按钮 -->
+        <button class="back-btn" id="backBtn">返回</button>
+    </div>
+
+    <!-- 爱情宣言页面 -->
+    <div class="love-declaration-page" id="loveDeclarationPage">
+        <div class="declaration-background">
+            <!-- 浮动的心形和玫瑰 -->
+            <div class="floating-hearts">
+                <div class="heart">💖</div>
+                <div class="heart">💕</div>
+                <div class="heart">💗</div>
+                <div class="heart">💝</div>
+                <div class="heart">💖</div>
+                <div class="heart">💕</div>
+            </div>
+            <div class="floating-roses-bg">
+                <div class="rose-bg">🌹</div>
+                <div class="rose-bg">🤍</div>
+                <div class="rose-bg">🌹</div>
+                <div class="rose-bg">🤍</div>
+                <div class="rose-bg">🌹</div>
+                <div class="rose-bg">🤍</div>
+            </div>
+        </div>
+        
+        <div class="declaration-content">
+            <div class="declaration-title">
+                <h1>我们的未来</h1>
+                <div class="title-decoration">💖✨💖</div>
+            </div>
+            
+            <div class="declaration-text">
+                <p class="main-text">下一页是我们生活的每一页</p>
+                <p class="sub-text">我会永远爱你的！宝！！</p>
+            </div>
+            
+            <div class="declaration-footer">
+                <div class="love-symbols">💕 💖 💕</div>
+            </div>
+        </div>
+        
+        <!-- 返回相册按钮 -->
+        <button class="back-to-album-btn" id="backToAlbumBtn">
+            <span>返回相册</span>
+            <div class="btn-glow"></div>
+        </button>
+    </div>
+
+    <!-- 照片数据 -->
+    <script>
+        window.photoData = [
+            {
+                id: 1,
+                title: '初次相遇',
+                description: '你的17岁生日，很幸运我碰上了 💖',
+                emoji: '💖',
+                color: '#ff6b6b',
+                image: 'images/090CD0BBF060F753F94C417A3931230A.png' // 在这里添加你的照片URL，例如：'images/first-meet.jpg'
+            },
+            {
+                id: 2,
+                title: '甜蜜聊天',
+                description: '每天和你聊天都是我最期待的时光，你的每一句话都让我心动 🌸',
+                emoji: '🌸',
+                color: '#4ecdc4',
+                image: '' // 在这里添加你的照片URL
+            },
+            {
+                id: 3,
+                title: '确定关系',
+                description: '当你答应做我女朋友的那一刻，我觉得自己是世界上最幸福的人 💕',
+                emoji: '💕',
+                color: '#45b7d1',
+                image: '' // 在这里添加你的照片URL
+            },
+            {
+                id: 4,
+                title: '第一次见面',
+                description: '虽然隔着屏幕聊了很久，但第一次见到真实的你，还是紧张得心跳加速 🎉',
+                emoji: '🎉',
+                color: '#96ceb4',
+                image: '' // 在这里添加你的照片URL
+            },
+            {
+                id: 5,
+                title: '一周年纪念',
+                description: '一年的时光，感谢你陪伴我度过每一个平凡而美好的日子 🎂',
+                emoji: '🎂',
+                color: '#feca57',
+                image: '' // 在这里添加你的照片URL
+            },
+            {
+                id: 6,
+                title: '跨年夜',
+                description: '和你一起迎接新年，许下永远在一起的愿望 ❄️',
+                emoji: '❄️',
+                color: '#a29bfe',
+                image: '' // 在这里添加你的照片URL
+            },
+            {
+                id: 7,
+                title: '你的生日',
+                description: '今天是你的生日，愿你永远快乐，永远被爱包围 🎈',
+                emoji: '🎈',
+                color: '#fd79a8',
+                image: '' // 在这里添加你的照片URL
+            },
+            {
+                id: 8,
+                title: '乐山美食',
+                description: '和你一起品尝美食，分享快乐，这就是我想要的简单幸福 🍜',
+                emoji: '🍜',
+                color: '#fdcb6e',
+                image: '' // 在这里添加你的照片URL
+            }
+        ];
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
